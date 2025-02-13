@@ -88,7 +88,7 @@ async function main() {
     await fs.copy(templatePath, projectPath);
 
     // Copy .gitignore from templatePath (since it's not copied by fs.copy)
-    await fs.copyFile(path.join(templatePath, '.gitignore'), path.join(projectPath, '.gitignore'));
+    await fs.copyFile(path.join(templatePath, 'gitignore'), path.join(projectPath, '.gitignore'));
 
     // Customize files
     await customizeTemplateFiles(projectPath, answers);

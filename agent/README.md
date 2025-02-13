@@ -1,4 +1,4 @@
-# 🤖 WASP - WebAssembly Agent Studio for UOMI
+# 🤖 WASP - WebAssembly Agent Simulation for UOMI
 
 <div align="center">
 
@@ -11,7 +11,7 @@
 
 ## 🌟 Overview
 
-WASP (WebAssembly Agent Studio Protocol) is a development environment for creating, testing, and deploying AI agents on the UOMI Network. It provides a comprehensive suite of tools and services to build powerful WebAssembly-based agents that can interact with LLMs, handle file storage, and process data efficiently.
+WASP (WebAssembly Agent Simulation Protocol) is a development environment for creating, testing, and deploying AI agents on the UOMI Network. It provides a comprehensive suite of tools and services to build powerful WebAssembly-based agents that can interact with LLMs, handle file storage, and process data efficiently.
 
 ## 🚀 Quick Start
 
