@@ -200,7 +200,7 @@ Built-in debugging features:
 
 ## Compiled WASM
 
-The compiled WASM file after thest is located in the `host/src/agent_template.wasm` directory.
+The compiled WASM file after test is located in the `host/src/agent_template.wasm` directory.
 
 ## 🤝 Contributing
 
