@@ -152,7 +152,7 @@ async function customizeTemplateFiles(projectPath, answers) {
   const spinner = ora('Customizing project files...').start();
   
   try {
-    const cargoTomlPath = path.join(projectPath + "/agent-template", 'Cargo.toml');
+    const cargoTomlPath = path.join(projectPath + "/agent-template", 'cargo.toml');
     let cargoToml = await fs.readFile(cargoTomlPath, 'utf8');
     cargoToml = cargoToml.replace('agent-template', answers.projectName);
     await fs.writeFile(cargoTomlPath, cargoToml);
