@@ -1,6 +1,6 @@
 {
     "name": "wasp",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "UOMI Agent development environment setup tool",
     "main": "index.js",
     "bin": {
