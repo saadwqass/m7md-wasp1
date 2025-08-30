@@ -1,78 +1,67 @@
-# 🚀 WASP
+# 🤖 WASP - WebAssembly Agent Simulation for UOMI
 
 <div align="center">
 
-![Wasp Logo](./wasp-tech-logo.png)
-
+*The development toolkit for building UOMI Network AI agents with WebAssembly and Rust* 🦀
 
 [![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![WebAssembly](https://img.shields.io/badge/wasm-%23654FF0.svg?style=for-the-badge&logo=webassembly&logoColor=white)](https://webassembly.org/)
 [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-
-*A powerful development environment for creating UOMI agents using WebAssembly and Rust* 🦀
-
 </div>
 
-## 📖 Overview
+## 🌟 Overview
 
-This development environment allows you to create, test, and debug UOMI agents using WebAssembly (WASM) and Rust. The environment provides seamless integration with both UOMI and third-party LLM services, supporting multiple model configurations and API formats.
+WASP (WebAssembly Agent Simulation Protocol) is a development environment for creating, testing, and deploying AI agents on the UOMI Network. It provides a comprehensive suite of tools and services to build powerful WebAssembly-based agents that can interact with LLMs, handle file storage, and process data efficiently.
 
-### 🌟 Features
-
-- 🔄 Hot-reloading development environment
-- 📝 Interactive console for testing
-- 🐛 Built-in debugging capabilities
-- 🔍 Response analysis tools
-- 💾 Conversation history management
-- 🔌 Support for multiple LLM providers
-- 🔑 Secure API key management
-- 📊 Performance metrics tracking
-
-## 🛠 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- [Rust](https://rustup.rs/) (latest stable version)
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- WebAssembly target: `rustup target add wasm32-unknown-unknown`
-
-## 🚀 Getting Started
-
-### Option 1: Quick Start with NPX
+## 🚀 Quick Start
 
 ```bash
-# Create a new UOMI agent project
-npx wasp create
-```
+# Create new agent project
+npx wasp create my-agent
 
-### Option 2: Manual Setup
+# Enter project directory
+cd my-agent
 
-```bash
-git clone https://github.com/Uomi-network/uomi-chat-agent-template.git
-cd uomi-chat-agent-template/agent
-npm install
-chmod +x ./bin/build_and_run_host.sh
+# Start development environment
 npm start
 ```
 
-## 🔧 Configuration
+## 📋 Requirements
 
-### Model Configuration
+- Rust (latest stable)
+- Node.js (v14+)
+- WebAssembly target: `rustup target add wasm32-unknown-unknown`
 
-The environment supports multiple model configurations through `uomi.config.json`:
+## 🛠 Core Services
+
+### AI Model Integration
+- Multiple model support via `uomi.config.json`
+- Built-in handling of different API formats
+- Automatic token usage tracking
+- Performance metrics collection
+
+### IPFS Storage
+- Direct IPFS file access
+- CID-based content retrieval
+- Integrated content addressing
+- Built-in timeout handling
+
+### Local File Processing
+- Input file handling
+- Binary data processing
+- Automatic size management
+- Memory-safe operations
+
+### Development Tools
+- Hot-reloading environment
+- Interactive testing console
+- Performance monitoring
+- Debug logging system
+
+## ⚙️ Configuration
 
 ```json
 {
-  "local_file_path": "path/to/input.txt",
-  "api": {
-    "timeout_ms": 30000,
-    "retry_attempts": 3,
-    "headers": {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-      "User-Agent": "UOMI-Client/1.0"
-    }
-  },
   "models": {
     "1": {
       "name": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4"
@@ -90,124 +79,88 @@ The environment supports multiple model configurations through `uomi.config.json
 }
 ```
 
-you can run the node-ai service following this repository [node-ai](https://github.com/Uomi-network/uomi-node-ai)
+## 🔌 API Reference
 
-doing that you don't need to specify any url/api_key in the models configuration, you will run the production version of the node-ai service.
+### Core Functions
 
-if you don't have enough resources to run the node-ai service you can use a third-party service like openai, in this case you need to specify the url and the api_key in the models configuration.
+```rust
+// Input/Output Operations
+read_input() -> Vec<u8>                    // Read user input data
+save_output(data: &[u8])                   // Save agent response
+get_input_file_service() -> Vec<u8>        // Process input file data
+
+// AI Service Integration
+call_ai_service(model: i32, content: Vec<u8>) -> Vec<u8>  // Call AI model
+prepare_request(body: &str) -> Vec<u8>                    // Format API request
+
+// IPFS Operations
+get_cid_file_service(cid: Vec<u8>) -> Vec<u8>  // Fetch IPFS content
+
+// Development Tools
+log(message: &str)  // Console logging
+```
 
 ### Response Formats
 
-The environment automatically handles different response formats:
-
-#### UOMI Format
+Expected AI service response format:
 ```json
 {
-  "response": "Hello, how can I help?",
+  "response": "Agent response content",
   "time_taken": 1.23,
   "tokens_per_second": 45,
   "total_tokens_generated": 54
 }
 ```
 
-#### OpenAI Format
-```json
-{
-  "choices": [{
-    "message": {
-      "content": "Hello, how can I help?"
-    }
-  }],
-  "usage": {
-    "total_tokens": 150,
-    "prompt_tokens": 50,
-    "completion_tokens": 100
-  }
-}
-```
+## 💻 Development Console
 
-## 💡 Usage Examples
+Interactive commands available during development:
 
-### Interactive Mode
-```bash
-$ npm start
-UOMI Development Environment
-Type your messages. Use these commands:
-/clear - Clear conversation history
-/history - Show conversation history
-/exit - Exit the program
+- `/clear` - Reset conversation state
+- `/history` - Display message history
+- `/metrics` - Show performance metrics
+- `/exit` - End development session
 
-You: Hello, how are you?
-Assistant: Hello! I'm doing well, thank you for asking...
+## 🔍 Performance Monitoring
 
-Performance Metrics:
-- Time taken: 1.20s
-- Tokens/second: 45
-- Total tokens: 54
-```
+Track agent performance with built-in metrics:
+- Response time
+- Token usage
+- Processing speed
+- Memory utilization
 
-### Development
+## 🔒 Security
 
-#### Custom Model Integration
-```rust
-// Add a new model in uomi.config.json
-{
-  "models": {
-    "3": {
-      "name": "custom-model",
-      "url": "https://api.custom-provider.com/v1/chat",
-      "api_key": "your-api-key"
-    }
-  }
-}
-```
+- Secure API key management
+- Memory-safe operations
+- Input validation
+- Size-limited processing
 
-## 📊 Performance Monitoring
+## 🎯 Best Practices
 
-The environment provides detailed performance metrics:
+1. **Error Handling**
+   - Implement proper error handling for API calls
+   - Validate input data
+   - Handle memory limits appropriately
 
-- Response time tracking
-- Token usage statistics
-- Rate limiting information
-- Error tracking and retry statistics
+2. **Performance**
+   - Monitor token usage
+   - Optimize message processing
+   - Use appropriate model selection
 
-## 🔐 Security
+3. **Development**
+   - Use debug logging effectively
+   - Test with different models
+   - Monitor metrics during development
 
-- API keys are stored securely in configuration files
-- Support for environment variable substitution
-- Automatic header management for authentication
-- Secure HTTPS communication
+## 📚 Additional Resources
 
-## 🐛 Debugging
-
-Built-in debugging features:
-- Detailed WASM logging
-- Request/response inspection
-- Performance profiling
-- Error tracing with retry information
-
-## 📚 API Reference
-
-### Host Functions
-
-| Function | Description |
-|----------|-------------|
-| `get_input()` | Read input data |
-| `set_output()` | Set output data |
-| `call_service_api()` | Make API calls with retry support |
-| `get_file_from_cid()` | Fetch IPFS content |
-| `log()` | Debug logging |
-
-## Compiled WASM
-
-The compiled WASM file after test is located in the `host/src/agent_template.wasm` directory.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- [UOMI Network Documentation](https://docs.uomi.network)
+- [WebAssembly Guide](https://webassembly.org)
+- [Rust Documentation](https://www.rust-lang.org/learn)
 
 ---
 
 <div align="center">
-Made with ❤️ by the UOMI team
+Powered by UOMI Network 🚀
 </div>

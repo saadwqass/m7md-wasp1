@@ -1,0 +1,26 @@
+{
+  "local_file_path": "../agent-template/src/request_input_file_example.txt",
+  "api": {
+      "timeout_ms": 30000,
+      "retry_attempts": 3,
+      "headers": {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "User-Agent": "UOMI-Client/1.0"
+      }
+  },
+  "models": {
+      "1": {
+          "name": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4"
+      },
+      "2": {
+          "name": "gpt-3.5-turbo",
+          "url": "https://api.openai.com/v1/chat/completions",
+          "api_key": ""
+      }
+  },
+  "ipfs": {
+      "gateway": "https://ipfs.io/ipfs",
+      "timeout_ms": 10000
+  }
+}
