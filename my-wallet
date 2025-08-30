@@ -1,0 +1,12 @@
+// wallet.js
+
+
+const myWalletAddress = "0x259FEe19DF3Cb45805c3dad3D62747dA2847CD03";
+
+function getDeveloperWallet() {
+  return {
+    developer: "My UOMI Agent Developer",
+    wallet: myWalletAddress,
+    note: "This wallet belongs to the developer of this agent"
+  };
+}
