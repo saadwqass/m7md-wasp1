@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "User message sent to the WASP agent"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata about the request",
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": ["en", "ar", "fr", "es"],
+          "description": "Language of the user message"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time when the message was sent"
+        }
+      }
+    }
+  },
+  "required": ["message"]
+}
